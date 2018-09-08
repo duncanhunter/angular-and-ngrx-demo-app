@@ -1,3 +1,4 @@
-<p>
-  add-attendee works!
-</p>
+<form [formGroup]="addAttendeeForm" (ngSubmit)="submit()">
+    <input type="text" formControlName="name">
+    <button type="submit" >submit</button>
+</form>
