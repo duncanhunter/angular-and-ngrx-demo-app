@@ -19,7 +19,11 @@ export class AddAttendeeComponent {
   });
 
   submit() {
-    // debugger;
-    this.addAttendee.emit(this.addAttendeeForm.value);
+    const attendee = {
+      name: this.addAttendeeForm.value,
+      attending: true,
+      guests: 0
+    };
+    this.addAttendee.emit(attendee);
   }
 }
