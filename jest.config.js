@@ -1,13 +1,31 @@
 module.exports = {
-  preset: 'jest-preset-angular',
-  roots: ['src'],
-  setupTestFrameworkScriptFile: '<rootDir>/src/setup-jest.ts',
-  moduleNameMapper: {
-    '@app/(.*)': '<rootDir>/src/app/$1',
-    '@assets/(.*)': '<rootDir>/src/assets/$1',
-    '@core/(.*)': '<rootDir>/src/app/core/$1',
-    '@env': '<rootDir>/src/environments/environment',
-    '@src/(.*)': '<rootDir>/src/src/$1',
-    '@state/(.*)': '<rootDir>/src/app/state/$1',
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "src/tsconfig.spec.json"
+    },
+    "__TRANSFORM_HTML__": true
   },
+  "transform": {
+    "^.+\\.(ts|js|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js"
+  },
+  "testMatch": [
+    "**/__tests__/**/*.+(ts|js)?(x)",
+    "**/+(*.)+(spec|test).+(ts|js)?(x)"
+  ],
+  "moduleFileExtensions": [
+    "ts",
+    "js",
+    "html",
+    "json"
+  ],
+  "transformIgnorePatterns": [
+    "node_modules/(?!@ngrx|ng2-truncate)"
+  ],
+  "snapshotSerializers": [
+    "<rootDir>/node_modules/jest-preset-angular/AngularSnapshotSerializer.js",
+    "<rootDir>/node_modules/jest-preset-angular/HTMLCommentSerializer.js"
+  ],
+  "preset": "jest-preset-angular",
+  "setupTestFrameworkScriptFile": "<rootDir>/src/test.ts",
+  "testURL": "http://localhost/"
 };
