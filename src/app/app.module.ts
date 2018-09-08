@@ -15,6 +15,7 @@ import { HomeComponent } from './home/containers/home/home.component';
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },
+      { path: 'event', loadChildren: 'src/app/event/event.module#EventModule' },
     ])
   ],
   providers: [],
