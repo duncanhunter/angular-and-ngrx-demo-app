@@ -35,9 +35,14 @@ describe('AddAttendeeComponent', () => {
   });
 
   it('should emit an attendee', async(() => {
+    const FAKE_ATTENDEE = {
+      name: 'Duncan',
+      attending: true,
+      guests: 0
+    };
     component.addAttendeeForm.controls.name.setValue('Duncan');
     component.addAttendee.subscribe((attendee: Attendee) => {
-      expect(attendee.name).toEqual('Duncan');
+      expect(attendee).toEqual(FAKE_ATTENDEE);
     });
     component.submit();
   }));
