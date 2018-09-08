@@ -3,6 +3,7 @@ import { Output } from '@angular/core';
 import { Attendee } from '../../../models';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-attendee',
@@ -14,11 +15,11 @@ export class AddAttendeeComponent {
   addAttendee = new EventEmitter<Attendee>();
 
   addAttendeeForm = new FormGroup({
-    name: new FormControl('')
+    name: new FormControl('', [Validators.required])
   });
 
   submit() {
-    debugger;
+    // debugger;
     this.addAttendee.emit(this.addAttendeeForm.value);
   }
 }
