@@ -11,9 +11,6 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./add-attendee.component.scss']
 })
 export class AddAttendeeComponent {
-  @Output()
-  addAttendee = new EventEmitter<Attendee>();
-
   addAttendeeForm = new FormGroup({
     name: new FormControl('', [Validators.required])
   });
@@ -24,6 +21,6 @@ export class AddAttendeeComponent {
       attending: true,
       guests: 0
     };
-    this.addAttendee.emit(attendee);
+    console.log('TCL: AddAttendeeComponent -> submit -> attendee', attendee);
   }
 }

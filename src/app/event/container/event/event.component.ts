@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Attendee } from '../../../models';
 
 @Component({
   selector: 'app-event',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  addAttendee(attendee: Attendee) {
+    console.log('TCL: EventComponent -> addAttendee -> attendee', attendee);
   }
-
 }
