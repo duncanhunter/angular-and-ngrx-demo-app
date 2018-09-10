@@ -7,13 +7,16 @@ import { Attendee } from '../../../models';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
-  attendees: Attendee[];
+  attendees: Attendee[] = [];
   constructor() {}
 
   ngOnInit() {}
 
   addAttendee(attendee: Attendee) {
     this.attendees = [...this.attendees, attendee];
-    console.log('TCL: EventComponent -> addAttendee -> this.attendees', this.attendees);
+    console.log(
+      'TCL: EventComponent -> addAttendee -> this.attendees',
+      this.attendees
+    );
   }
 }
