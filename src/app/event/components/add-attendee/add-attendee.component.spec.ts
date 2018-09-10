@@ -33,17 +33,4 @@ describe('AddAttendeeComponent', () => {
   it('should have an invalid form on load', () => {
     expect(component.addAttendeeForm.valid).toEqual(false);
   });
-
-  it('should emit an attendee', async(() => {
-    const FAKE_ATTENDEE = {
-      name: 'Duncan',
-      attending: true,
-      guests: 0
-    };
-    component.addAttendeeForm.controls.name.setValue('Duncan');
-    component.addAttendee.subscribe((attendee: Attendee) => {
-      expect(attendee).toEqual(FAKE_ATTENDEE);
-    });
-    component.submit();
-  }));
 });
