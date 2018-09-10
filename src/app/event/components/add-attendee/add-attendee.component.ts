@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Attendee } from '../../../models';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-attendee',
@@ -10,11 +10,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./add-attendee.component.scss']
 })
 export class AddAttendeeComponent {
-  @Output()
-  addAttendee = new EventEmitter<Attendee>();
-
   addAttendeeForm = new FormGroup({
-    name: new FormControl('')
+    name: new FormControl('', [Validators.required])
   });
 
   submit() {
@@ -23,6 +20,6 @@ export class AddAttendeeComponent {
       attending: true,
       guests: 0
     };
-    this.addAttendee.emit(attendee);
+    console.log('TCL: AddAttendeeComponent -> submit -> attendee', attendee);
   }
 }
