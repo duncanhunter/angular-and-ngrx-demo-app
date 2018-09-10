@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventListComponent should have 1 attendee on load 1`] = `
+EventListComponent {
+  "attendees": Array [
+    Object {
+      "attending": true,
+      "guests": 2,
+      "name": "Duncan",
+    },
+  ],
+}
+`;
+
+exports[`EventListComponent should have no attendeea on load 1`] = `EventListComponent {}`;
