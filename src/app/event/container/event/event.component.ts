@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+
 import { Attendee } from '../../../models';
 import { EventService } from '../../services/event.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-event',
@@ -9,12 +11,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
+  spinner$: Observable<boolean>;
   attendees$: Observable<Attendee[]>;
 
-  constructor(private eventService: EventService) {}
+  constructor(private store: Store<any>, private eventService: EventService) {}
 
   ngOnInit() {
     this.getAttendees();
+    this.spinner$ = this.store.pipe(select(state => state.spinner.isOn));
   }
 
   getAttendees() {
@@ -22,6 +26,10 @@ export class EventComponent implements OnInit {
   }
 
   addAttendee(attendee: Attendee) {
-    this.eventService.addAttendee(attendee).subscribe(() => this.getAttendees());
+    this.store.dispatch({ type: 'startSpinner' });
+    this.eventService.addAttendee(attendee).subscribe(() => {
+      this.store.dispatch({ type: 'stopSpinner' });
+      this.getAttendees();
+    });
   }
 }
