@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { EventComponent } from './container/event/event.component';
 import { AddAttendeeComponent } from './components/add-attendee/add-attendee.component';
@@ -10,7 +12,8 @@ import { EventListComponent } from './components/event-list/event-list.component
   imports: [
     CommonModule,
     RouterModule.forChild([{ path: '', component: EventComponent }]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   declarations: [EventComponent, AddAttendeeComponent, EventListComponent]
 })
