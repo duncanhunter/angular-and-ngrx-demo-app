@@ -1,11 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { EventComponent } from './event.component';
+import { of } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler/src/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+
+import { EventComponent } from './event.component';
 import { EventService } from '../../services/event.service';
-import { of } from 'rxjs';
 
 describe('EventComponent', () => {
   let component: EventComponent;
@@ -20,6 +21,12 @@ describe('EventComponent', () => {
           provide: EventService,
           useValue: {
             getAttendees: () => {}
+          }
+        },
+        {
+          provide: Store,
+          useValue: {
+            pipe: () => {}
           }
         }
       ],
