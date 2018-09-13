@@ -10,5 +10,5 @@ export const getAttendeeState = createSelector(
 
 export const getAttendees = createSelector(
   getAttendeeState,
-  state => state.attendees
+  fromAttendee.selectAll
 );
