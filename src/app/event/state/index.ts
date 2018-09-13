@@ -1,10 +1,12 @@
-import * as fromAttendees from './attendees/attendees.reducer';
 import { ActionReducerMap } from '@ngrx/store';
 
-export interface EventState {
+import * as fromRoot from './../../state/state';
+import * as fromAttendees from './attendees/attendees.reducer';
+
+export interface EventState extends fromRoot.State {
   attendees: fromAttendees.State;
 }
 
-export const reducers: ActionReducerMap<EventState> = {
+export const reducers: Partial<ActionReducerMap<EventState>> = {
   attendees: fromAttendees.reducer
 };
