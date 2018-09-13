@@ -2,14 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/containers/home/home.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { HomeComponent } from './home/containers/home/home.component';
+import { AppComponent } from './app.component';
 import { InMemoryDataService } from './app.db';
 import { reducer } from './state/spinner/spinner.reducer';
+import { environment } from '../environments/environment.prod';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -21,8 +22,14 @@ import { reducer } from './state/spinner/spinner.reducer';
       { path: 'event', loadChildren: './event/event.module#EventModule' }
     ]),
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 }),
-    StoreModule.forRoot({ spinner: reducer })
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      delay: 1000
+    }),
+    StoreModule.forRoot({ spinner: reducer }),
+    StoreDevtoolsModule.instrument({
+      name: 'NgRx Demo App',
+      logOnly: environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
