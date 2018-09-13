@@ -9,9 +9,9 @@ describe('Reducer: Spinner', () => {
   });
 
   it('should have a isOn set to true', () => {
-    const initialState = { isOn: false };
-    const action = new StartSpinner();
+    const state = { isOn: false };
+    const action = { type: 'startSpinner' };
     const expected = { isOn: true };
-    expect(reducer(initialState, action)).toEqual(expected);
+    expect(reducer(state, action)).toEqual(expected);
   });
 });
