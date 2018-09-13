@@ -41,10 +41,23 @@ export function reducer(state = intitalState, action: AttendeesActions): State {
       });
     }
 
+    case AttendeesActionTypes.AddAttendeeSuccess: {
+      return adapter.addOne(action.payload, { ...state, error: null });
+    }
+
+    case AttendeesActionTypes.AddAttendeeFail: {
+      return { ...state, error: action.payload };
+    }
+
     default: {
       return state;
     }
   }
 }
 
-export const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors();
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal
+} = adapter.getSelectors();

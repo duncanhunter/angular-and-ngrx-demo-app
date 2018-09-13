@@ -14,6 +14,7 @@ export class EventService {
   }
 
   addAttendee(attendee: Attendee): Observable<Attendee> {
+    debugger;
     return this.httpClient.post<Attendee>('/api/attendees', attendee);
   }
 }

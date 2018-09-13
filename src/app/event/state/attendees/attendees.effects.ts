@@ -9,7 +9,10 @@ import {
   AttendeesActionTypes,
   LoadAttendees,
   LoadAttendeesSuccess,
-  LoadAttendeesFail
+  LoadAttendeesFail,
+  AddAttendee,
+  AddAttendeeSuccess,
+  AddAttendeeFail
 } from './attendees.actions';
 import { Attendee } from '../../../models';
 
@@ -24,6 +27,17 @@ export class AttendeesEffects {
       this.eventService.getAttendees().pipe(
         map((attendees: Attendee[]) => new LoadAttendeesSuccess(attendees)),
         catchError(error => of(new LoadAttendeesFail(error)))
+      )
+    )
+  );
+
+  @Effect()
+  addAttendee$ = this.actions$.pipe(
+    ofType(AttendeesActionTypes.AddAttendee),
+    switchMap((action: AddAttendee) =>
+      this.eventService.addAttendee(action.payload).pipe(
+        map((attendee: Attendee) => new AddAttendeeSuccess(attendee)),
+        catchError(error => of(new AddAttendeeFail(error)))
       )
     )
   );
