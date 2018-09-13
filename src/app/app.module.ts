@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 import { HomeComponent } from './home/containers/home/home.component';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment.prod';
       delay: 1000
     }),
     StoreModule.forRoot({ spinner: reducer }),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       name: 'NgRx Demo App',
       logOnly: environment.production
