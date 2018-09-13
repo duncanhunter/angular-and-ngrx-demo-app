@@ -21,7 +21,7 @@ export class AddAttendeeComponent {
     const attendee = {
       name: this.addAttendeeForm.value.name,
       attending: true,
-      guests: 0
+      guests: 1
     };
     this.addAttendee.emit(attendee);
   }

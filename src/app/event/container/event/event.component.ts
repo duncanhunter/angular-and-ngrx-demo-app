@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-
 import { Attendee } from '../../../models';
 import { EventService } from '../../services/event.service';
 import {
@@ -15,7 +14,7 @@ import {
 } from '../../state/attendees/attendees.actions';
 import { EventState } from '../../state';
 import { getAttendees } from '../../state/attendees/attendees.selectors';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -24,18 +23,19 @@ import { getAttendees } from '../../state/attendees/attendees.selectors';
 export class EventComponent implements OnInit {
   spinner$: Observable<boolean>;
   attendees$: Observable<Attendee[]>;
-
   constructor(
     private store: Store<EventState>,
-    private eventService: EventService
+    private eventService: EventService,
+    private router: Router
   ) {}
-
   ngOnInit() {
     this.attendees$ = this.store.pipe(select(getAttendees));
-    this.store.dispatch(new LoadAttendees());
+    // this.store.dispatch(new LoadAttendees());
   }
-
   addAttendee(attendee: Attendee) {
     this.store.dispatch(new AddAttendee(attendee));
+  }
+  navigate(hasGuests: boolean) {
+    this.router.navigateByUrl(`/event?hasGuests=${hasGuests}`);
   }
 }

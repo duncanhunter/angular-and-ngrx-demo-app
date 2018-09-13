@@ -24,6 +24,7 @@
     "@davinkevin/jest": "0.0.13",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/entity": "^6.1.0",
+    "@ngrx/router-store": "^6.1.0",
     "@ngrx/store": "^6.1.0",
     "@ngrx/store-devtools": "^6.1.0",
     "core-js": "^2.5.4",

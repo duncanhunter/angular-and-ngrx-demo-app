@@ -9,6 +9,7 @@ import { EventComponent } from './event.component';
 import { EventService } from '../../services/event.service';
 import { EventState } from '../../state';
 import { Attendee } from '../../../models';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('EventComponent', () => {
   let component: EventComponent;
@@ -18,6 +19,7 @@ describe('EventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       providers: [
         { provide: HttpClient, useValue: null },
         {
