@@ -50,14 +50,15 @@ export class AttendeesEffects {
     ofType(ROUTER_NAVIGATION),
     map((r: RouterNavigationAction) => r.payload),
     filter((r: RouterNavigationPayload<any>) => {
-      debugger
       return r.routerState.url.startsWith('/event?hasGuests=');
     }),
     switchMap(r =>
-      this.eventService.getAttendees(r.routerState.root.queryParams['hasGuests']).pipe(
-        map((attendees: Attendee[]) => new LoadAttendeesSuccess(attendees)),
-        catchError(error => of(new LoadAttendeesFail(error)))
-      )
+      this.eventService
+        .getAttendees(r.routerState.root.queryParams['hasGuests'])
+        .pipe(
+          map((attendees: Attendee[]) => new LoadAttendeesSuccess(attendees)),
+          catchError(error => of(new LoadAttendeesFail(error)))
+        )
     )
   );
 }
