@@ -7,7 +7,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { EventComponent } from './container/event/event.component';
+import { EventComponent } from './containers/event/event.component';
 import { AddAttendeeComponent } from './components/add-attendee/add-attendee.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { reducers, effects } from './state';
