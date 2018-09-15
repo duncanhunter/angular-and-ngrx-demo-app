@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { EventComponent } from './container/event/event.component';
+import { EventComponent } from './containers/event/event.component';
 @NgModule({
   imports: [
     CommonModule,
