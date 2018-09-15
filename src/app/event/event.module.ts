@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { EventComponent } from './container/event/event.component';
+import { EventComponent } from './containers/event/event.component';
 import { AddAttendeeComponent } from './components/add-attendee/add-attendee.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { StoreModule } from '@ngrx/store';
