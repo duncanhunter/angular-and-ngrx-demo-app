@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { EventComponent } from './container/event/event.component';
+import { EventComponent } from './containers/event/event.component';
 import { AddAttendeeComponent } from './components/add-attendee/add-attendee.component';
 @NgModule({
   imports: [
