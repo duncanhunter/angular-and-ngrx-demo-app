@@ -24,7 +24,7 @@ describe('EventListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have no attendeea on load', () => {
+  it('should have no attendee on load', () => {
     expect(component).toMatchSnapshot();
   });
 
