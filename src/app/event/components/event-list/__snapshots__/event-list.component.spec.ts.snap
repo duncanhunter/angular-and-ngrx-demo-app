@@ -12,4 +12,6 @@ EventListComponent {
 }
 `;
 
+exports[`EventListComponent should have no attendee on load 1`] = `EventListComponent {}`;
+
 exports[`EventListComponent should have no attendeea on load 1`] = `EventListComponent {}`;
