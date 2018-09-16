@@ -14,7 +14,7 @@ export class LoadAttendeesSuccess implements Action {
 }
 export class LoadAttendeesFail implements Action {
   readonly type = AttendeesActionTypes.LoadAttendeesFail;
-  constructor(public payload: Attendee[]) {}
+  constructor(public payload: any) {}
 }
 export type AttendeesActions =
   | LoadAttendees
