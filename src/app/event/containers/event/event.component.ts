@@ -13,7 +13,10 @@ import {
   AddAttendee
 } from '../../state/attendees/attendees.actions';
 import { EventState } from '../../state';
-import { getAttendees } from '../../state/attendees/attendees.selectors';
+import {
+  getAttendees,
+  getFilteredAttendees
+} from '../../state/attendees/attendees.selectors';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-event',
@@ -29,13 +32,13 @@ export class EventComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
-    this.attendees$ = this.store.pipe(select(getAttendees));
-    // this.store.dispatch(new LoadAttendees());
+    this.attendees$ = this.store.pipe(select(getFilteredAttendees));
+    this.store.dispatch(new LoadAttendees());
   }
   addAttendee(attendee: Attendee) {
     this.store.dispatch(new AddAttendee(attendee));
   }
-  navigate(hasGuests: boolean) {
-    this.router.navigateByUrl(`/event?hasGuests=${hasGuests}`);
+  navigate(filterBy: string) {
+    this.router.navigateByUrl(`/event?filterBy=${filterBy}`);
   }
 }

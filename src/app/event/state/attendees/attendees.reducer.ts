@@ -6,13 +6,15 @@ import { Attendee } from '../../../models';
 export interface State extends EntityState<Attendee> {
   loading: boolean;
   error: any;
+  filterBy: string;
 }
 
 const adapter: EntityAdapter<Attendee> = createEntityAdapter<Attendee>();
 
 export const intitalState: State = adapter.getInitialState({
   loading: false,
-  error: null
+  error: null,
+  filterBy: 'all'
 });
 
 export function reducer(state = intitalState, action: AttendeesActions): State {
@@ -47,6 +49,10 @@ export function reducer(state = intitalState, action: AttendeesActions): State {
 
     case AttendeesActionTypes.AddAttendeeFail: {
       return { ...state, error: action.payload };
+    }
+
+    case AttendeesActionTypes.FilterBy: {
+      return { ...state, filterBy: action.payload };
     }
 
     default: {

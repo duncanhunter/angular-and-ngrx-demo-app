@@ -12,7 +12,8 @@ import {
   LoadAttendeesFail,
   AddAttendee,
   AddAttendeeSuccess,
-  AddAttendeeFail
+  AddAttendeeFail,
+  FilterBy
 } from './attendees.actions';
 import { Attendee } from '../../../models';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
@@ -48,17 +49,11 @@ export class AttendeesEffects {
   @Effect()
   loadDiaryHealthActions$ = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
-    map((r: RouterNavigationAction) => r.payload),
-    filter((r: RouterNavigationPayload<any>) => {
-      return r.routerState.url.startsWith('/event?hasGuests=');
-    }),
-    switchMap(r =>
-      this.eventService
-        .getAttendees(r.routerState.root.queryParams['hasGuests'])
-        .pipe(
-          map((attendees: Attendee[]) => new LoadAttendeesSuccess(attendees)),
-          catchError(error => of(new LoadAttendeesFail(error)))
-        )
-    )
+    map((r: RouterNavigationAction) => ({
+      url: r.payload.routerState.url,
+      filterBy: r.payload.routerState.root.queryParams['filterBy']
+    })),
+    filter(({ url, filterBy }) => url.startsWith('/event')),
+    map(({ filterBy }) => new FilterBy(filterBy))
   );
 }

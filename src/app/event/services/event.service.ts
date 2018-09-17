@@ -9,12 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class EventService {
   constructor(private httpClient: HttpClient) {}
 
-  getAttendees(hasGuests?: string): Observable<Attendee[]> {
-    return hasGuests !== undefined
-      ? hasGuests === 'true'
-        ? this.httpClient.get<Attendee[]>('/api/attendees?guests=^1')
-        : this.httpClient.get<Attendee[]>('/api/attendees?guests=^0')
-      : this.httpClient.get<Attendee[]>('/api/attendees');
+  getAttendees(): Observable<Attendee[]> {
+    return this.httpClient.get<Attendee[]>('/api/attendees');
   }
 
   addAttendee(attendee: Attendee): Observable<Attendee> {
