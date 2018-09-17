@@ -1,6 +1,7 @@
 <app-add-attendee (addAttendee)="addAttendee($event)"></app-add-attendee>
 <select name="Guests filter" (change)="navigate($event.target.value)">
-  <option [value]="true">With Guests</option>
-  <option [value]="false">Without Guests</option>
+  <option [value]="'all'">All</option>
+  <option [value]="'withGuests'">With Guests</option>
+  <option [value]="'withoutGuests'">Without Guests</option>
 </select>
 <app-event-list *ngIf="!(spinner$ | async)" [attendees]="attendees$ | async"></app-event-list>

@@ -12,3 +12,22 @@ export const getAttendees = createSelector(
   getAttendeeState,
   fromAttendee.selectAll
 );
+
+export const getFilterBy = createSelector(
+  getAttendeeState,
+  state => state.filterBy
+);
+
+export const getFilteredAttendees = createSelector(
+  getAttendees,
+  getFilterBy,
+  (attendees, filterBy) =>
+    attendees.filter(
+      attendee =>
+        filterBy === 'all'
+          ? true
+          : filterBy === 'withGuests'
+            ? attendee.guests >= 1
+            : attendee.guests === 0
+    )
+);
